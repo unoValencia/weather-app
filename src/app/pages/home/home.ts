@@ -12,7 +12,6 @@ import { SampleCard } from '../../components/sample-card/sample-card';
 })
 export class Home {
 
-  //injector
   private readonly weatherService = inject(Weather);
 
   //signals
