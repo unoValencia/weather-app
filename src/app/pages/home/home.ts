@@ -36,24 +36,9 @@ export class Home {
         console.log('Full Weather Data:', data);
         const tableData = {
           city: data.name,
-          country: data.sys.country,
-          coordinates: `Lat: ${data.coord.lat}, Lon: ${data.coord.lon}`,
           temperature: data.main.temp,
-          feelsLike: data.main.feels_like,
-          tempMin: data.main.temp_min,
-          tempMax: data.main.temp_max,
-          pressure: data.main.pressure,
           humidity: data.main.humidity,
           windSpeed: data.wind.speed,
-          windDegree: data.wind.deg,
-          visibility: data.visibility,
-          cloudiness: data.clouds?.all || 0,
-          weatherMain: data.weather[0].main,
-          weatherDescription: data.weather[0].description,
-          weatherIcon: data.weather[0].icon,
-          sunrise: new Date(data.sys.sunrise * 1000).toLocaleTimeString(),
-          sunset: new Date(data.sys.sunset * 1000).toLocaleTimeString(),
-          timezone: data.timezone,
         };
         console.table(tableData);
 
