@@ -1,9 +1,35 @@
-<!--
-Welcome to the Weather App project! 🚀
+<div class="min-h-screen flex flex-col gap-3 py-4 px-4 bg-gray-100">
 
-Dear new hire, we're excited to have you on board. Please make sure to read the README.md file in this repository for important instructions, project guidelines, and onboarding steps before you start coding.
--->
-<!-- You can freely remove the <app-sample-card> and create your 
-    own components for displaying weather data. -->
-    
-<app-sample-card [weatherData]="weatherDataResource.value()"></app-sample-card>
+    <!-- Header -->
+    <div class="flex flex-col gap-3 items-center">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
+                Weather App
+            </h1>
+
+    <!-- Search Section -->
+    <div class="max-w-2xl mx-auto w-full">
+        <app-weather-search (searchTriggered)="onSearchCity($event)" />
+        <app-sample-card [weatherData]="weatherDataResource.value()"></app-sample-card>
+    </div>
+
+    <!-- Weather Data Section -->
+    <div class="max-w-2xl mx-auto w-full">
+        @if (weatherDataResource.error()) {
+        <div class="text-center p-5 bg-white rounded-3xl shadow-lg border border-gray-200">
+            <i class="pi pi-exclamation-circle text-6xl text-gray-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Oops! Something went wrong</h3>
+            <p class="text-gray-600 mb-6">
+                Unable to fetch weather data
+            </p>
+        </div>
+        <div
+            class="flex flex-col justify-center items-center text-center py-16 bg-white rounded-3xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Welcome to the Weather App</h2>
+            <p class="text-gray-600 mb-6">
+                Use the search box above to find weather information for any city.
+            </p>
+        </div>
+        }
+    </div>
+</div>

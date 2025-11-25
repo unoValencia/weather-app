@@ -1,8 +1,0 @@
-<div class="weather-search">
-  <input #cityInput [value]="city" (input)="city = cityInput.value" placeholder="Enter city name" />
-  <button (click)="searchWeather()">Search</button>
-
-  <div [hidden]="!error" class="error">{{ error }}</div>
-
-  <div class="weather-result" [hidden]="!weatherData">{{ weatherData | json }}</div>
-</div>
