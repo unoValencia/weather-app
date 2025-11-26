@@ -1,34 +1,57 @@
-<div class="min-h-screen flex flex-col gap-3 py-4 px-4 bg-gray-100">
-
+<div class="weather-app-container">
     <!-- Header -->
-    <div class="flex flex-col gap-3 items-center align-center">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 align-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight align-center">
+    <div class="header-section">
+        <div class="header-wrapper">
+            <h1 class="main-title">
                 Weather App
             </h1>
-
-    <!-- Search Section -->
-
-    <!-- Weather Data Section -->
-    <div class="max-w-2xl mx-auto w-full">
-        <div class="max-w-2xl mx-auto w-full">
-        <app-weather-search (searchTriggered)="onSearchCity($event)" />
-        <app-sample-card [weatherData]="weatherDataResource.value()"></app-sample-card>
+        </div>
     </div>
+
+    <!-- Search Section & Weather Data Section -->
+    <div class="content-wrapper">
+        <!-- Search Component -->
+        <div class="search-section">
+            <app-weather-search (searchTriggered)="onSearchCity($event)" />
+        </div>
+
+        <!-- Weather Card -->
+        <div class="weather-card-section">
+            <app-sample-card 
+                [weatherData]="weatherDataResource.value()">
+            </app-sample-card>
+        </div>
+
+        <!-- Error State -->
         @if (weatherDataResource.error()) {
-        <div class="text-center p-5 bg-white rounded-3xl shadow-lg border border-gray-200">
-            <i class="pi pi-exclamation-circle text-6xl text-gray-500 mb-4"></i>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Oops! Something went wrong</h3>
-            <p class="text-gray-600 mb-6">
-                Unable to fetch weather data
+        <div class="error-card">
+            <div class="icon-container error-icon">
+                <i class="pi pi-exclamation-circle"></i>
+            </div>
+            <h3 class="error-title">Oops! Something went wrong</h3>
+            <p class="error-message">
+                Unable to fetch weather data. Please try again.
             </p>
         </div>
-        <div
-            class="flex flex-col justify-center items-center text-center py-16 bg-white rounded-3xl shadow-lg border border-gray-200">
-            <h2 class="text-2xl font-bold text-gray-800 mb-2">Welcome to the Weather App</h2>
-            <p class="text-gray-600 mb-6">
-                Use the search box above to find weather information for any city.
+        } @else if (!weatherDataResource.value()) {
+        <!-- Welcome State -->
+        <div class="welcome-card">
+            <div class="welcome-icon-wrapper">
+                <div class="welcome-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="cloud-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                </div>
+            </div>
+            <h2 class="welcome-title">Welcome to the Weather App</h2>
+            <p class="welcome-message">
+                Use the search box above to find real-time weather information for any city around the world.
             </p>
+            <div class="feature-tags">
+                <span class="tag tag-blue">Temperature</span>
+                <span class="tag tag-purple">Humidity</span>
+                <span class="tag tag-pink">Wind Speed</span>
+            </div>
         </div>
         }
     </div>

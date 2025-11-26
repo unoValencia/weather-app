@@ -11,7 +11,8 @@ import { WeatherSearch } from '../../components/weather-search/weather-search';
     WeatherSearch,
 
   ],
-  templateUrl: './home.html'
+  templateUrl: './home.html',
+  styleUrl: './home.css'
 })
 export class Home {
 
@@ -38,7 +39,6 @@ export class Home {
           city: data.name,
           temperature: data.main.temp,
           humidity: data.main.humidity,
-          windSpeed: data.wind.speed,
         };
         console.table(tableData);
 

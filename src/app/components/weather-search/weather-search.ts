@@ -4,7 +4,8 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-weather-search',
-  templateUrl: './weather-search.html'
+  templateUrl: './weather-search.html',
+  styleUrl: './weather-search.css'
 })
 
 export class WeatherSearch {
