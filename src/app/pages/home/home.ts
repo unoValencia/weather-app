@@ -3,6 +3,7 @@ import { Weather } from '../../services/weather/weather';
 import { IWeather } from '../../models/weather.model';
 import { SampleCard } from '../../components/sample-card/sample-card';
 import { WeatherSearch } from '../../components/weather-search/weather-search';
+import { ApplicationConfig } from '@angular/core';
 
 @Component({
   selector: 'app-home',

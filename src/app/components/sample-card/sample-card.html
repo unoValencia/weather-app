@@ -18,14 +18,18 @@
     </div>
 </div>
 
+
 <!-- Weather Card -->
 <div class="card">
     <div class="card-header">
         <h2>{{ weatherData()?.name }}</h2>
     </div>
-    <div class="card-body">
-        <p><strong>Temperature:</strong> {{ getTemperature() }}{{ isMetric() ? '°C' : '°F' }}</p>
-        <p><strong>Humidity:</strong> {{ weatherData()?.main?.humidity }}%</p>
-        <p><strong>Wind Speed:</strong> {{ getWindSpeed() }} {{ isMetric() ? 'km/h' : 'mph' }}</p>
+    <div class="card-body-container">
+        <img *ngIf="getWeatherIcon()" [src]="getWeatherIcon()" alt="Weather Icon" class="weather-icon">
+        <p class="details"><strong>Temperature:</strong> {{ getTemperature() }}{{ isMetric() ? '°C' : '°F' }}</p>
+        <p class="details"><strong>Humidity:</strong> {{ weatherData()?.main?.humidity }}%</p>
+        <p class="details"><strong>Wind Speed:</strong> {{ getWindSpeed() }} {{ isMetric() ? 'km/h' : 'mph' }}</p>
+        <p class="details"><strong>Sunrise Time:</strong> {{ getSunriseTime() }}</p>
+        <p class="details"  ><strong>Sunset Time:</strong> {{ getSunSetTime() }}</p>
     </div>
 </div>

@@ -1,12 +1,16 @@
 import { Component, input, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { IWeather } from '../../models/weather.model';
+
+
 
 @Component({
   selector: 'app-sample-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sample-card.html',
   styleUrl: './sample-card.css'
 })
+
 export class SampleCard {
   readonly weatherData = input<IWeather>();
   readonly isMetric = signal(true);
@@ -42,4 +46,25 @@ export class SampleCard {
       return mph.toFixed(1);
     }
   }
+  getSunSetTime(): string {
+    const sunset = this.weatherData()?.sys?.sunset;
+    if (!sunset) return '--';
+    // Assuming `sunset` is a timestamp
+    const date = new Date(sunset * 1000); 
+    return date.toLocaleTimeString(); 
+  }
+  getSunriseTime(): string {
+    const sunrise = this.weatherData()?.sys?.sunrise;
+    if (!sunrise) return '--';
+    // Assuming `sunrise` is a timestamp
+    const date = new Date(sunrise * 1000);
+    return date.toLocaleTimeString();
+  }
+
+  getWeatherIcon(): string {
+    const icon = this.weatherData()?.weather?.[0]?.icon;
+    if (!icon) return '';
+    return `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  }
 }
+
