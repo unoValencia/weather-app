@@ -15,12 +15,41 @@
             <app-weather-search (searchTriggered)="onSearchCity($event)" />
         </div>
 
+        <!-- Loading State -->
+        @if (weatherDataResource.isLoading()) {
+        <div class="loading-card">
+            <div class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+            <p class="loading-text">Fetching weather data...</p>
+        </div>
+        }
+
         <!-- Weather Card -->
+        @if (weatherDataResource.value() && !weatherDataResource.isLoading()) {
         <div class="weather-card-section">
             <app-sample-card 
                 [weatherData]="weatherDataResource.value()">
             </app-sample-card>
+
+            <!-- History Card -->
+            @if (showHistory()) {
+            <div class="history-card">
+                <div class="history-header">
+                    <h3 class="history-title">Search History</h3>
+                    <button type="button" (click)="clearHistory()" class="clear-history-btn">Clear</button>
+                </div>
+                <ul class="history-list">
+                    @for (city of searchHistory(); track city) {
+                    <li class="history-item" (click)="selectFromHistory(city)">
+                        <span class="history-city">{{ city }}</span>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
         </div>
+        }
 
         <!-- Error State -->
         @if (weatherDataResource.error()) {
@@ -33,7 +62,7 @@
                 Unable to fetch weather data. Please try again.
             </p>
         </div>
-        } @else if (!weatherDataResource.value()) {
+        } @else if (!weatherDataResource.value() && !weatherDataResource.isLoading()) {
         <!-- Welcome State -->
         <div class="welcome-card">
             <div class="welcome-icon-wrapper">

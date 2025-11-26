@@ -90,12 +90,22 @@
   height: 1.125rem;
 }
 
-/* Responsive Design */
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+/* Search History Dropdown */
+
+
 @media (max-width: 640px) {
   .search-wrapper {
     flex-direction: column;
     width: 100%;
-    gap: 1rem; /* Add gap between input and button */
+    gap: 1rem; 
   }
   
   .input-container {
@@ -107,7 +117,7 @@
     justify-content: center;
   }
 }
-/* Animation for focus */
+
 @keyframes pulse {
   0%, 100% {
     opacity: 1;

@@ -156,6 +156,82 @@
     margin-bottom: 0;
 }
 
+.history-button-container {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.history-btn {
+    padding: 0.65rem 1.25rem;
+    border: none;
+    background: transparent;
+    color: rgba(102, 126, 234, 0.7);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 50px;
+    letter-spacing: 0.5px;
+}
+
+.history-btn:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: rgba(102, 126, 234, 1);
+    transform: translateY(-1px);
+}
+
+.history-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 10;
+    width: 200px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.history-title {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #374151;
+}
+
+.clear-history-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history-item {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.history-item:hover {
+    background: #f3f4f6;
+}
+
 @media (max-width: 640px) {
     .metric-switch-container {
         padding: 0 0.75rem;

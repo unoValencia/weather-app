@@ -50,6 +50,19 @@ export class Home {
     }
   });
 
+  public readonly showHistory = signal<boolean>(false);
+  public readonly searchHistory = signal<string[]>([]);
+
+  public clearHistory(): void {
+    this.searchHistory.set([]);
+  }
+
+  public selectFromHistory(city: string): void {
+    this.cityName.set(city);
+    this.showHistory.set(false);
+    this.weatherDataResource.reload();
+  }
+
   public onSearchCity(event: { city: string; units: 'metric' | 'imperial' }): void {
     this.cityName.set(event.city);
     this.unitSystem.set(event.units);

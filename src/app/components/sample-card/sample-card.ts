@@ -14,6 +14,8 @@ import { IWeather } from '../../models/weather.model';
 export class SampleCard {
   readonly weatherData = input<IWeather>();
   readonly isMetric = signal(true);
+  public readonly showHistory = signal<boolean>(false);
+  public readonly searchHistory = signal<string[]>([]);
 
   setMetric(value: boolean): void {
     this.isMetric.set(value);
@@ -66,5 +68,18 @@ export class SampleCard {
     if (!icon) return '';
     return `https://openweathermap.org/img/wn/${icon}@2x.png`;
   }
-}
 
+  public toggleHistory(): void {
+    this.showHistory.set(!this.showHistory());
+  }
+
+  public clearHistory(): void {
+    this.searchHistory.set([]);
+  }
+
+  public selectFromHistory(city: string): void {
+    this.showHistory.set(false);
+    console.log(`Selected city from history: ${city}`);
+    // Implement additional logic for handling the selected city
+  }
+}
