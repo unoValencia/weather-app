@@ -1,4 +1,14 @@
 <div class="metric-switch-container">
+    <!-- History Button -->
+    <div class="history-button-container">
+        <button 
+            class="history-btn"
+            (click)="toggleHistory()"
+            type="button">
+            {{ showHistory() ? 'Back' : 'History' }}
+        </button>
+    </div>
+    
     <div class="metric-switch">
         <button 
             class="switch-btn" 
@@ -15,15 +25,6 @@
             °F
         </button>
     </div>
-</div>
-<!-- History Button (Outside Card) -->
-<div class="history-button-container">
-    <button 
-        class="history-btn"
-        (click)="toggleHistory()"
-        type="button">
-        {{ showHistory() ? 'Back' : 'History' }}
-    </button>
 </div>
 
 <!-- Conditional Rendering -->
