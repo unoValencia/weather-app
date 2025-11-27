@@ -7,9 +7,8 @@ import { WeatherSearch } from '../weather-search/weather-search';
   selector: 'app-sample-card',
   imports: [CommonModule],
   templateUrl: './sample-card.html',
-  styleUrl: './sample-card.css'
+  styleUrl: './sample-card.css',
 })
-
 export class SampleCard {
   readonly weatherData = input<IWeather>();
   readonly isMetric = signal(true);
@@ -41,7 +40,7 @@ export class SampleCard {
         return celsius.toFixed(1);
       } else {
         // Convert Kelvin to Fahrenheit
-        const fahrenheit = (temp - 273.15) * 9/5 + 32;
+        const fahrenheit = ((temp - 273.15) * 9) / 5 + 32;
         return fahrenheit.toFixed(1);
       }
     } catch (error) {
@@ -72,8 +71,8 @@ export class SampleCard {
       const sunset = this.weatherData()?.sys?.sunset;
       if (!sunset) return '--';
       // Assuming `sunset` is a timestamp
-      const date = new Date(sunset * 1000); 
-      return date.toLocaleTimeString(); 
+      const date = new Date(sunset * 1000);
+      return date.toLocaleTimeString();
     } catch (error) {
       console.error('Error getting sunset time:', error);
       return '--';
@@ -135,7 +134,9 @@ export class SampleCard {
 
   public handleInvalidCity(): void {
     try {
-      console.error('Invalid city entered. Please check the city name and try again.');
+      console.error(
+        'Invalid city entered. Please check the city name and try again.'
+      );
       alert('Invalid city entered. Please check the city name and try again.');
     } catch (error) {
       console.error('Error handling invalid city:', error);
